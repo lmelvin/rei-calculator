@@ -1,0 +1,270 @@
+<div class="row pt-2">
+  <div class="col">
+    <form [formGroup]="form">
+      <div class="card" formGroupName="valuation">
+        <div class="card-header">
+          Property Valuation
+        </div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="propertyValue">Property Value</label>
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="number"
+                         step="1000"
+                         class="form-control"
+                         (input)="recalculate()"
+                         formControlName="value">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="downPayment">Down Payment</label>
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="number"
+                         step="1000"
+                         class="form-control"
+                         (input)="updateDownPaymentPercentage()"
+                         formControlName="downPayment">
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="downPaymentPercentage">&nbsp;</label>
+                <div class="input-group input-group-sm">
+                  <input type="number"
+                         step="1"
+                         class="form-control"
+                         (input)="updateDownPaymentFromPercentage()"
+                         formControlName="downPaymentPercentage">
+                  <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="expectedRent">Expected Rent</label>
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="number"
+                         class="form-control"
+                         (input)="recalculate()"
+                         formControlName="rent">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3" formGroupName="maintenance">
+        <div class="card-header">
+          Operating Cost (Monthly)
+        </div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="downPayment">Mortgage</label>
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="number"
+                         class="form-control"
+                         formControlName="mortgage">
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="hoa">HOA</label>
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="number"
+                         step="1"
+                         class="form-control"
+                         formControlName="hoa">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="tax">Tax</label>
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="number"
+                         step="1"
+                         class="form-control"
+                         formControlName="tax">
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="insurance">Insurance</label>
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="number"
+                         class="form-control"
+                         formControlName="insurance">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="maintenance">Maintenance</label>
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="number"
+                         step="5"
+                         class="form-control"
+                         (input)="updateMaintenancePercentage()"
+                         formControlName="maintenance">
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="maintenancePercentage">&nbsp;</label>
+                <div class="input-group input-group-sm">
+                  <input type="number"
+                         step="1"
+                         class="form-control"
+                         (input)="updateMaintenanceFromPercentage()"
+                         formControlName="maintenancePercentage">
+                  <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="management">Management</label>
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="number"
+                         class="form-control"
+                         (input)="updateManagementPercentage()"
+                         formControlName="management">
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="managementPercentage">&nbsp;</label>
+                <div class="input-group input-group-sm">
+                  <input type="number"
+                         class="form-control"
+                         (input)="updateManagementFromPercentage()"
+                         formControlName="managementPercentage">
+                  <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="propertyValue">Capital Expense</label>
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="number"
+                         step="5"
+                         class="form-control"
+                         formControlName="capitalExpense">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="form-group row">
+          <label for="staticEmail" class="col-6 col-form-label">Operating Expense</label>
+          <div class="col">
+            <input type="text" readonly class="form-control-plaintext" [value]="operatingExpense | currency">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="staticEmail" class="col-6 col-form-label">Operating Expense Percentage</label>
+          <div class="col">
+            <input type="text" readonly class="form-control-plaintext" [value]="operatingExpensePercentage | percent:'1.0-2'">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="staticEmail" class="col-6 col-form-label">Operating Net (Monthly)</label>
+          <div class="col">
+            <input type="text" readonly class="form-control-plaintext" [value]="operatingNetMonthly | currency">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="staticEmail" class="col-6 col-form-label">Operating Net (Annual)</label>
+          <div class="col">
+            <input type="text" readonly class="form-control-plaintext" [value]="operatingNetAnnual | currency">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="staticEmail" class="col-6 col-form-label">Maintenance (Annual)</label>
+          <div class="col">
+            <input type="text" readonly class="form-control-plaintext" [value]="maintenanceAnnual | currency">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="staticEmail" class="col-6 col-form-label">CoC</label>
+          <div class="col">
+            <input type="text" readonly class="form-control-plaintext" [value]="cashOnCash | percent:'1.0-2'">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="staticEmail" class="col-6 col-form-label">Years to Recover DP</label>
+          <div class="col">
+            <input type="text" readonly class="form-control-plaintext" [value]="yearsToRecover | number:'1.0-2'">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
